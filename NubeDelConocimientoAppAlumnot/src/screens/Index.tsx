@@ -1,10 +1,12 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
+import { RootStackParams } from '../Navigator/Rutas';
 
-interface Props extends StackScreenProps<any, any>{}
+interface Props extends StackScreenProps<RootStackParams,'Index'>{}
 
-export const Index = ({navigation}: Props) => {
+export const Index = ({route,navigation}: Props) => {
+  const params = route.params;
   return (
     <View
       style={{
@@ -81,7 +83,13 @@ export const Index = ({navigation}: Props) => {
           </View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback 
-         onPress={() => navigation.navigate('PerfilAlumno')}
+         onPress={() => navigation.navigate('PerfilAlumno',{
+          correo: params.correo,
+          nombre: params.nombre,
+          password: params.password,
+          aPaterno: params.aPaterno,
+          aMaterno: params.aMaterno
+         })}
         >
           <View
             style={{
@@ -150,18 +158,22 @@ export const Index = ({navigation}: Props) => {
           backgroundColor: '#FFF',
           width: '50%',
           height: '5%',
-          paddingLeft: '30%',
+          //paddingLeft: '30%',
           paddingVertical: '5%',
           borderRadius: 100,
           bottom: '10%',
           left: '25%',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
         <Text
           style={{
             color: '#2DDA93',
             fontWeight: 'bold',
           }}>
-          TutorialesGZ
+          {
+            params.aMaterno
+          }
         </Text>
       </View>
     </View>

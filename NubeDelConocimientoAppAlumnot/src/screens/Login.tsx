@@ -6,7 +6,48 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 interface Props extends StackScreenProps<any, any>{}
 
 export const Login = ({navigation}:Props) => {
-  const [text, setText] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [password, setPassword] = useState('');
+
+  const verificar = () =>{
+    //console.log(correo);
+    //console.log(password);
+    const datosUsuario: any[][] = [];
+
+    fetch('http://nube-del-conocimiento.com/NubeFuncion/loginAlumno/loginProceso.php  ',{
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        correo: correo,
+        password: password
+      })
+    }).then((response)=> response.json())
+    .then((respuestaJson) => {
+      //console.log(respuestaJson)
+      /*for(let i in respuestaJson){
+        datosUsuario.push([i,respuestaJson[i]])
+      }*/
+      if(respuestaJson[0].usuario === 'Encontrado'){
+        navigation.navigate('Index',{
+          correo: respuestaJson[1].correo,
+          nombre: respuestaJson[1].nombre,
+          password: respuestaJson[1].password,
+          aPaterno: respuestaJson[1].aPaterno,
+          aMaterno: respuestaJson[1].aMaterno
+        });
+      }else if(respuestaJson.usuario === 'No encontrado'){
+        /*datosUsuario.forEach(function(elemento,indice,datosUsuario){
+          console.log(elemento,indice)
+        })*/
+        console.log(respuestaJson)
+      }
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
   return (
     <View
       style={{
@@ -80,6 +121,7 @@ export const Login = ({navigation}:Props) => {
             borderRadius: 10,
           }}
           placeholder="Type here to translate!"
+          onChangeText={setCorreo}
         />
         <Text
           style={{
@@ -101,6 +143,7 @@ export const Login = ({navigation}:Props) => {
             borderRadius: 10,
           }}
           placeholder="Type here to translate!"
+          onChangeText={setPassword}
         />
         <View style={{
             backgroundColor: '#FFFFFF',
@@ -119,7 +162,8 @@ export const Login = ({navigation}:Props) => {
           elevation: 8,
         }}>
             <TouchableNativeFeedback
-            onPress={() => navigation.navigate('Index')}
+            onPress={()=> verificar()}
+            /**() => navigation.navigate('Index') */
             >
                 <Text style={{
                              color: '#2DDA93',
@@ -147,3 +191,7 @@ export const Login = ({navigation}:Props) => {
 };
 
 export default Login;
+function alert(respuestaJson: any) {
+  throw new Error('Function not implemented.');
+}
+

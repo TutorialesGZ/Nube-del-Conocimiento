@@ -1,8 +1,13 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
+import { RootStackParams } from '../Navigator/Rutas';
 
-export const PerfilAlumno = () => {
+interface Props extends StackScreenProps<RootStackParams,'PerfilAlumno'>{}
+
+export const PerfilAlumno = ({route,navigation}: Props) => {
+  const params = route.params;
   return (
     <View
       style={{
@@ -13,6 +18,8 @@ export const PerfilAlumno = () => {
         style={{
           backgroundColor: '#2DDA93',
           height: '40%',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
         <View
           style={{
@@ -45,32 +52,18 @@ export const PerfilAlumno = () => {
             right: '55%',
           }}></View>
         <Image
-          style={{
-            left: '40%',
-            top: '25%',
-          }}
           source={require('../img/perfil.png')}
         />
         <Text
           style={{
             color: '#FFF',
             fontWeight: 'bold',
-            top: '30%',
-            left: '33%',
+            marginTop: 15,
             fontSize: 18,
           }}>
-          David Limón Aguilar
-        </Text>
-        <Text
-          style={{
-            color: '#FFF',
-            fontWeight: 'bold',
-            fontSize: 18,
-            left: '40%',
-            top: '35%',
-          }}>
-          {' '}
-          15/05/2001
+          {params.nombre + " "}
+          {params.aPaterno + " "}
+          {params.aMaterno}
         </Text>
       </View>
 
@@ -87,7 +80,7 @@ export const PerfilAlumno = () => {
       <TextInput
         style={{
           backgroundColor: '#2DDA93',
-          color: '#FFF',
+          color: 'white',
           fontWeight: 'bold',
           fontSize: 16,
           width: '70%',
@@ -95,6 +88,7 @@ export const PerfilAlumno = () => {
           borderRadius: 100,
           paddingLeft: '5%',
         }}
+        placeholder = {params.nombre}
       />
       <View
         style={{
@@ -155,7 +149,9 @@ export const PerfilAlumno = () => {
             fontWeight: 'bold',
             fontSize: 16,
           }}>
-          david@gmail.com
+          {
+            params.correo
+          }
         </Text>
       </View>
       <Text
@@ -184,7 +180,9 @@ export const PerfilAlumno = () => {
             fontWeight: 'bold',
             fontSize: 16,
           }}>
-          Contraseña1234
+          {
+            params.password
+          }
         </Text>
       </View>
     </View>

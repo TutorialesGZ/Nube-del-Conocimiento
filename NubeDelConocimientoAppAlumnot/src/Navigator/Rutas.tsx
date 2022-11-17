@@ -4,6 +4,14 @@ import Login  from '../screens/Login';
 import {Index} from '../screens/Index';
 import { PerfilAlumno } from '../screens/PerfilAlumno';
 
+
+export type RootStackParams = {
+  Inicial: undefined,
+  Login: undefined,
+  Index: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string},
+  PerfilAlumno: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string},
+}
+
 const Stack = createStackNavigator();
 
 export const Rutas = () => {
