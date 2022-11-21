@@ -8,11 +8,11 @@ import { PerfilAlumno } from '../screens/PerfilAlumno';
 export type RootStackParams = {
   Inicial: undefined,
   Login: undefined,
-  Index: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string},
-  PerfilAlumno: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string},
+  Index: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string, apodo: string},
+  PerfilAlumno: {correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string, apodo: string},
 }
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParams>();
 
 export const Rutas = () => {
   return (

@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, {useState} from 'react';
-import {View, Text, Image, TextInput, TouchableNativeFeedback} from 'react-native';
+import {View, Text, Image, TextInput, TouchableNativeFeedback, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 interface Props extends StackScreenProps<any, any>{}
@@ -8,6 +8,18 @@ interface Props extends StackScreenProps<any, any>{}
 export const Login = ({navigation}:Props) => {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
+
+  const showAlert = () =>{
+    Alert.alert(
+      "Error",
+      "Usuario o contraseña incorrecto",
+      [
+        {
+          text: "OK", onPress: () => console.log("Ok Pressed")
+        }
+      ]
+    )
+  }
 
   const verificar = () =>{
     //console.log(correo);
@@ -36,16 +48,17 @@ export const Login = ({navigation}:Props) => {
           nombre: respuestaJson[1].nombre,
           password: respuestaJson[1].password,
           aPaterno: respuestaJson[1].aPaterno,
-          aMaterno: respuestaJson[1].aMaterno
+          aMaterno: respuestaJson[1].aMaterno,
+          apodo: respuestaJson[2][0].apodo
         });
       }else if(respuestaJson.usuario === 'No encontrado'){
         /*datosUsuario.forEach(function(elemento,indice,datosUsuario){
           console.log(elemento,indice)
         })*/
-        console.log(respuestaJson)
+        showAlert();
       }
     }).catch((error)=>{
-      console.log(error);
+      showAlert();
     })
   }
   return (
@@ -120,7 +133,7 @@ export const Login = ({navigation}:Props) => {
             top: '15%',
             borderRadius: 10,
           }}
-          placeholder="Type here to translate!"
+          placeholder="Correo@gmail.com"
           onChangeText={setCorreo}
         />
         <Text
@@ -142,7 +155,8 @@ export const Login = ({navigation}:Props) => {
             top: '30%',
             borderRadius: 10,
           }}
-          placeholder="Type here to translate!"
+          placeholder="Contraseña!"
+          secureTextEntry={true}
           onChangeText={setPassword}
         />
         <View style={{

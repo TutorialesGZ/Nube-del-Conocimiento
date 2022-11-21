@@ -1,13 +1,15 @@
-import { StackScreenProps } from '@react-navigation/stack';
-import React from 'react';
-import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
+import { Header, StackScreenProps } from '@react-navigation/stack';
+import React, { useState } from 'react';
+import {View, Text, Image, TouchableNativeFeedback, Modal, Button} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import { RootStackParams } from '../Navigator/Rutas';
 
 interface Props extends StackScreenProps<RootStackParams,'PerfilAlumno'>{}
 
 export const PerfilAlumno = ({route,navigation}: Props) => {
+  const [isVisible, setIsVisible] = useState(false);
   const params = route.params;
+  
   return (
     <View
       style={{
@@ -77,7 +79,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
         }}>
         Apodo
       </Text>
-      <TextInput
+      <Text
         style={{
           backgroundColor: '#2DDA93',
           color: 'white',
@@ -87,9 +89,9 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           marginLeft: '18%',
           borderRadius: 100,
           paddingLeft: '5%',
-        }}
-        placeholder = {params.nombre}
-      />
+          height: '6%',
+          paddingTop: '2%'
+        }}>{params.apodo}</Text>
       <View
         style={{
           marginTop: '5%',
@@ -109,7 +111,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           marginLeft: '6%'
         }}>
         <TouchableNativeFeedback
-        /*onPress={() => navigation.navigate('Index')}*/
+        onPress={() => {setIsVisible(true)}}
         >
           <Text
             style={{
@@ -123,6 +125,86 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           </Text>
         </TouchableNativeFeedback>
       </View>
+      {//modal
+       }
+       <Modal
+       animationType="fade"
+       visible={isVisible}
+       transparent={ true}
+       >
+        <View style={{
+          flex: 1,
+          backgroundColor: 'rgba(0,0,0,0.3)',
+        }}>
+
+          <View
+        style={{
+          position: 'absolute',
+          backgroundColor: '#2DDA93',
+          width: '80%',
+          height: '20%',
+          top: '35%',
+          borderRadius: 30,
+          marginHorizontal: '10%',
+        }}>
+        <Text
+          style={{
+            color: '#FFFFFF',
+            fontSize: 18,
+            fontWeight: 'bold',
+            left: '41%',
+            top: '10%',
+          }}>
+          Apodo
+        </Text>
+        <TextInput
+          style={{
+            backgroundColor: '#FFFFFF',
+            width: '80%',
+            marginHorizontal: '10%',
+            top: '15%',
+            borderRadius: 10,
+          }}
+          placeholder="Apodo"
+          //onChangeText={}
+        />
+          </View>
+          <View style={{
+            backgroundColor: '#FFFFFF',
+            width: '40%',
+            height: '7%',
+            borderRadius: 36,
+            top: '51%',
+            left: '31%',
+            shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 4.65,
+          elevation: 8,
+        }}>
+            <TouchableNativeFeedback
+             onPress={()=> setIsVisible(false)}
+            /**() => navigation.navigate('Index') */
+            >
+                <Text style={{
+                             color: '#2DDA93',
+                             fontSize: 14,
+                             fontWeight: 'bold',
+                           marginHorizontal: '15%',
+                           marginVertical: '10%'
+                }}>
+                    Establecer apodo
+                </Text>
+            </TouchableNativeFeedback>
+        </View>
+
+        </View>
+       </Modal>
+
+
       <Text
         style={{
           fontSize: 24,

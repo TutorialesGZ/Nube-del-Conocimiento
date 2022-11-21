@@ -88,7 +88,8 @@ export const Index = ({route,navigation}: Props) => {
           nombre: params.nombre,
           password: params.password,
           aPaterno: params.aPaterno,
-          aMaterno: params.aMaterno
+          aMaterno: params.aMaterno,
+          apodo: params.apodo
          })}
         >
           <View
@@ -157,7 +158,7 @@ export const Index = ({route,navigation}: Props) => {
           position: 'absolute',
           backgroundColor: '#FFF',
           width: '50%',
-          height: '5%',
+          height: '6%',
           //paddingLeft: '30%',
           paddingVertical: '5%',
           borderRadius: 100,
@@ -172,7 +173,7 @@ export const Index = ({route,navigation}: Props) => {
             fontWeight: 'bold',
           }}>
           {
-            params.aMaterno
+            params.apodo
           }
         </Text>
       </View>
