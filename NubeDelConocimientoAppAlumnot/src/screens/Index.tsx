@@ -29,7 +29,7 @@ export const Index = ({route,navigation}: Props) => {
           top: '25%',
           left: '-10%',
         }}
-        
+        source={require('../img/nube.png')}
       />
       <Image
         style={{
