@@ -29,7 +29,7 @@ export const Index = ({route,navigation}: Props) => {
           top: '25%',
           left: '-10%',
         }}
-        source={require('../img/nube.png')}
+        
       />
       <Image
         style={{
@@ -62,7 +62,7 @@ export const Index = ({route,navigation}: Props) => {
           paddingVertical: '5%',
         }}>
         <TouchableNativeFeedback
-        onPress={() => console.log('Play')}
+        onPress={() => navigation.navigate("Mapa")}
         >
           <View
             style={{
