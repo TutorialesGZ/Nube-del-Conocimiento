@@ -1,3 +1,4 @@
+import { NavigationHelpersContext } from '@react-navigation/native';
 import { Header, StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import {View, Text, Image, TouchableNativeFeedback, Modal, Button, Alert} from 'react-native';
@@ -27,6 +28,17 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
     )
   }
   
+  const regresar = () => {
+    navigation.navigate('Index',{
+      numControl: params.numControl,
+      correo: params.correo,
+      nombre: params.nombre,
+      password: params.password,
+      aPaterno: params.aPaterno,
+      aMaterno: params.aMaterno,
+      apodo: apodoActual
+    });
+  }
   const actualizarApodo = () =>{
     //console.log(correo);
     //console.log(password);
@@ -51,10 +63,22 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
       }*/
       //actualizar = apodo;
       setapodoActual(apodo);
+      /*
+      navigation.navigate('Index',{
+      numControl: params.numControl,
+      correo: params.correo,
+      nombre: params.nombre,
+      password: params.password,
+      aPaterno: params.aPaterno,
+      aMaterno: params.aMaterno,
+      apodo: apodoActual
+    });
+       */
       setIsVisible(false);
     }).catch((error)=>{
       showAlert();
     })
+    
   }
 
 
@@ -145,12 +169,17 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
         }}>{apodoActual
         }
         </Text>
+      <View style={{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        left:-20
+      }}>
       <View
         style={{
           marginTop: '5%',
           backgroundColor: '#2DDA93',
           width: '30%',
-          height: '4%',
+          height: '60%',
           borderRadius: 36,
           left: '31%',
           shadowColor: '#000',
@@ -178,7 +207,44 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
             }}>
             Cambiar Apodo
           </Text>
+        </TouchableNativeFeedback>        
+      </View>
+      <View
+        style={{
+          marginTop: '5%',
+          backgroundColor: '#2DDA93',
+          width: '30%',
+          height: '60%',
+          borderRadius: 36,
+          left: '31%',
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 4.65,
+          elevation: 8,
+          marginLeft: '6%'
+        }}>
+        <TouchableNativeFeedback
+        onPress={() => {
+          regresar();
+        }}
+        >
+          <Text
+            style={{
+              color: '#FFF',
+              fontSize: 10,
+              fontWeight: 'bold',
+              marginHorizontal: '30%',
+              marginVertical: '5%',
+            }}>
+            Regresar
+          </Text>
         </TouchableNativeFeedback>
+        
+      </View>
       </View>
       {//modal
        }

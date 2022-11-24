@@ -5,6 +5,8 @@ import {Index} from '../screens/Index';
 import { PerfilAlumno } from '../screens/PerfilAlumno';
 import { PrototipoMapa } from '../screens/PrototipoMapa';
 import { SignosDePuntuacionAct1 } from '../screens/SignosDePuntuacionAct1';
+import { AdjetivosSustentivosVerbos } from '../screens/AdjetivosSustentivosVerbos';
+import { Sujeto1 } from '../screens/Act3/Sujeto1';
 
 
 export type RootStackParams = {
@@ -14,6 +16,8 @@ export type RootStackParams = {
   PerfilAlumno: {numControl: string, correo: string, nombre: string, password: string, aPaterno: string, aMaterno: string, apodo: string},
   Mapa: undefined,
   SignosDePuntuacionAct1: undefined,
+  AdjetivosSustentivosVerbos: undefined,
+  Sujeto1: undefined,
 }
 
 const Stack = createStackNavigator<RootStackParams>();
@@ -34,6 +38,8 @@ export const Rutas = () => {
       <Stack.Screen name="PerfilAlumno" component={PerfilAlumno} />
       <Stack.Screen name="Mapa" component={PrototipoMapa} />
       <Stack.Screen name="SignosDePuntuacionAct1" component={SignosDePuntuacionAct1} />
+      <Stack.Screen name="AdjetivosSustentivosVerbos" component={AdjetivosSustentivosVerbos} />
+      <Stack.Screen name="Sujeto1" component={Sujeto1} />
     </Stack.Navigator>
   );
 }

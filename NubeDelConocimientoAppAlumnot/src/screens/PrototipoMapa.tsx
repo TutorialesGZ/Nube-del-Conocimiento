@@ -166,7 +166,7 @@ export const PrototipoMapa = ({navigation}:Props) => {
         source={require('../img/perro2.png')}
       />
         <TouchableNativeFeedback
-        onPress={() => console.log('Nivel 2')}
+        onPress={() => navigation.navigate('AdjetivosSustentivosVerbos')}
         >
           <View
             style={{
@@ -199,7 +199,7 @@ export const PrototipoMapa = ({navigation}:Props) => {
         source={require('../img/perro3.png')}
       />
         <TouchableNativeFeedback
-        onPress={() => console.log('Nivel 3')}
+        onPress={() => navigation.navigate('Sujeto1')}
         >
           <View
             style={{
@@ -232,7 +232,7 @@ export const PrototipoMapa = ({navigation}:Props) => {
         source={require('../img/perro4.png')}
       />
         <TouchableNativeFeedback
-        onPress={() => console.log('Nivel 4')}
+        //onPress={() => navigation.navigate('AdjetivosSustentivosVerbos')}
         >
           <View
             style={{

@@ -1,5 +1,5 @@
 import {StackScreenProps} from '@react-navigation/stack';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import { RootStackParams } from '../Navigator/Rutas';
 
@@ -7,6 +7,36 @@ interface Props extends StackScreenProps<RootStackParams,'Index'>{}
 
 export const Index = ({route,navigation}: Props) => {
   const params = route.params;
+  const [apodo, setApodo] = useState(params.apodo);
+  useEffect(() => {
+    obtenerApodo()
+  })
+  
+
+  const obtenerApodo = () =>{
+    //console.log(correo);
+    //console.log(password);
+    const datosUsuario: any[][] = [];
+
+    fetch('http://nube-del-conocimiento.com/NubeFuncion/idJugador/getApodo.php',{
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nControl: params.numControl
+      })
+    }).then((response)=> response.json())
+    .then((respuestaJson) => {
+      //console.log(respuestaJson);
+      //console.log(respuestaJson[0].apodo);
+      setApodo(respuestaJson[0].apodo);
+    }).catch((error)=>{
+      console.error(error);
+    })
+  }
+
   return (
     <View
       style={{
@@ -174,7 +204,7 @@ export const Index = ({route,navigation}: Props) => {
             fontWeight: 'bold',
           }}>
           {
-            params.apodo
+            apodo
           }
         </Text>
       </View>
