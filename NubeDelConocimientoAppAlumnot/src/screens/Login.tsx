@@ -38,12 +38,13 @@ export const Login = ({navigation}:Props) => {
       })
     }).then((response)=> response.json())
     .then((respuestaJson) => {
-      //console.log(respuestaJson)
+      //console.log(respuestaJson[1].numeroControl)
       /*for(let i in respuestaJson){
         datosUsuario.push([i,respuestaJson[i]])
       }*/
       if(respuestaJson[0].usuario === 'Encontrado'){
         navigation.navigate('Index',{
+          numControl: respuestaJson[1].numeroControl,
           correo: respuestaJson[1].correo,
           nombre: respuestaJson[1].nombre,
           password: respuestaJson[1].password,

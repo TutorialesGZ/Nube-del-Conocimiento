@@ -1,21 +1,71 @@
 import { Header, StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import {View, Text, Image, TouchableNativeFeedback, Modal, Button} from 'react-native';
+import {View, Text, Image, TouchableNativeFeedback, Modal, Button, Alert} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import { RootStackParams } from '../Navigator/Rutas';
 
 interface Props extends StackScreenProps<RootStackParams,'PerfilAlumno'>{}
 
 export const PerfilAlumno = ({route,navigation}: Props) => {
+  
+  const [apodo, setApodo] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const params = route.params;
+  let actualizar: string = params.apodo;
+  const [apodoActual, setapodoActual] = useState(params.apodo);
   
+
+  const showAlert = () =>{
+    Alert.alert(
+      "Error",
+      "Error al actualizar el apodo",
+      [
+        {
+          text: "OK", onPress: () => console.log("Ok Pressed")
+        }
+      ]
+    )
+  }
+  
+  const actualizarApodo = () =>{
+    //console.log(correo);
+    //console.log(password);
+    const datosUsuario: any[][] = [];
+    //console.log(apodo);
+    //console.log(params.numControl);
+    fetch('http://nube-del-conocimiento.com/NubeFuncion/idJugador/actApodo.php',{
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nControl: params.numControl,
+        apodo: apodo
+      })
+    }).then((response)=> response.json())
+    .then((respuestaJson) => {
+      console.log(respuestaJson)
+      /*for(let i in respuestaJson){
+        datosUsuario.push([i,respuestaJson[i]])
+      }*/
+      //actualizar = apodo;
+      setapodoActual(apodo);
+      setIsVisible(false);
+    }).catch((error)=>{
+      showAlert();
+    })
+  }
+
+
   return (
+    
     <View
       style={{
         backgroundColor: '#FFF',
         flex: 1,
       }}>
+        
       <View
         style={{
           backgroundColor: '#2DDA93',
@@ -63,6 +113,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
             marginTop: 15,
             fontSize: 18,
           }}>
+            
           {params.nombre + " "}
           {params.aPaterno + " "}
           {params.aMaterno}
@@ -91,7 +142,9 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           paddingLeft: '5%',
           height: '6%',
           paddingTop: '2%'
-        }}>{params.apodo}</Text>
+        }}>{apodoActual
+        }
+        </Text>
       <View
         style={{
           marginTop: '5%',
@@ -111,7 +164,9 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           marginLeft: '6%'
         }}>
         <TouchableNativeFeedback
-        onPress={() => {setIsVisible(true)}}
+        onPress={() => {
+          setIsVisible(true)
+        }}
         >
           <Text
             style={{
@@ -121,7 +176,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
               marginHorizontal: '15%',
               marginVertical: '5%',
             }}>
-            Establecer Apodo
+            Cambiar Apodo
           </Text>
         </TouchableNativeFeedback>
       </View>
@@ -166,7 +221,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
             borderRadius: 10,
           }}
           placeholder="Apodo"
-          //onChangeText={}
+          onChangeText={setApodo}
         />
           </View>
           <View style={{
@@ -186,7 +241,10 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
           elevation: 8,
         }}>
             <TouchableNativeFeedback
-             onPress={()=> setIsVisible(false)}
+             onPress={()=> 
+              actualizarApodo()
+              
+            }
             /**() => navigation.navigate('Index') */
             >
                 <Text style={{
@@ -270,3 +328,7 @@ export const PerfilAlumno = ({route,navigation}: Props) => {
     </View>
   );
 };
+function showAlert() {
+  throw new Error('Function not implemented.');
+}
+

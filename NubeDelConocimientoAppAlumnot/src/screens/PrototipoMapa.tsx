@@ -1,7 +1,12 @@
 import React from 'react'
 import { Text, View, Image, TouchableNativeFeedback } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 
-export const PrototipoMapa = () => {
+
+interface Props extends StackScreenProps<any, any>{}
+
+export const PrototipoMapa = ({navigation}:Props) => {
+
   return (
     <View style={{
         flex: 1,
@@ -128,7 +133,7 @@ export const PrototipoMapa = () => {
         source={require('../img/perro1.png')}
       />
      <TouchableNativeFeedback
-        onPress={() => console.log('Nivel 1')}
+        onPress={() => navigation.navigate('SignosDePuntuacionAct1')}
         >
           <View
             style={{

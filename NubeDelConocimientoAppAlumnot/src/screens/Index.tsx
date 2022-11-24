@@ -84,6 +84,7 @@ export const Index = ({route,navigation}: Props) => {
         </TouchableNativeFeedback>
         <TouchableNativeFeedback 
          onPress={() => navigation.navigate('PerfilAlumno',{
+          numControl: params.numControl,
           correo: params.correo,
           nombre: params.nombre,
           password: params.password,
@@ -112,7 +113,7 @@ export const Index = ({route,navigation}: Props) => {
           </View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback
-        onPress={() => console.log('Salir')}
+        onPress={() => console.log(params.numControl)}
         >
           <View
             style={{
