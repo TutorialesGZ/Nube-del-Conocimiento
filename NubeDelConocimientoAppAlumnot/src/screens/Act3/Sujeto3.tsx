@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, Image, TouchableNativeFeedback, TextInput, Modal } from 'react-native'
+import { StackScreenProps } from '@react-navigation/stack';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, TouchableNativeFeedback, TextInput, Modal } from 'react-native';
 
-export const Sujeto1 = () => {
+interface Props extends StackScreenProps<any, any>{}
+
+export const Sujeto3 = ({navigation}:Props) => {
 
   const [horacion, setHoracion] = useState('');
   const [respuestaCorrecta, setRespuestaCorrecta] = useState('');
@@ -27,10 +30,10 @@ export const Sujeto1 = () => {
     }).then((response)=> response.json())
     .then((respuestaJson) => {
       //console.log(respuestaJson);
-      setHoracion(respuestaJson[0].pregunta);
-      setRespuestaCorrecta(respuestaJson[0].respuesta);
-      setRespuestaIncorrecta1(respuestaJson[0].respuestaIncorrecta1);
-      setRespuestaIncorrecta2(respuestaJson[0].respuestaIncorrecta2);
+      setHoracion(respuestaJson[2].pregunta);
+      setRespuestaCorrecta(respuestaJson[2].respuesta);
+      setRespuestaIncorrecta1(respuestaJson[2].respuestaIncorrecta1);
+      setRespuestaIncorrecta2(respuestaJson[2].respuestaIncorrecta2);
      // console.log(horacion);
       //console.log(respuestaCorrecta);
       //console.log(respuestaIncorrecta1);

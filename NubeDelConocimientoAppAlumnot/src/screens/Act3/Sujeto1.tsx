@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, Image, TouchableNativeFeedback, TextInput, Modal } from 'react-native'
+import { StackScreenProps } from '@react-navigation/stack';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, TouchableNativeFeedback, TextInput, Modal } from 'react-native';
 
-export const Sujeto1 = () => {
+interface Props extends StackScreenProps<any, any>{}
+
+export const Sujeto1 = ({navigation}:Props) => {
 
   const [horacion, setHoracion] = useState('');
   const [respuestaCorrecta, setRespuestaCorrecta] = useState('');
