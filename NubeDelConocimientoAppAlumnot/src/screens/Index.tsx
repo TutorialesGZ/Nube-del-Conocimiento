@@ -143,7 +143,7 @@ export const Index = ({route,navigation}: Props) => {
           </View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback
-        onPress={() => console.log(params.numControl)}
+        onPress={() => navigation.navigate("Login")}
         >
           <View
             style={{
