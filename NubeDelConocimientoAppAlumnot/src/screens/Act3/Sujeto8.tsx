@@ -141,7 +141,7 @@ export const Sujeto8 = ({navigation}:Props) => {
             top: '30%',
         }}>
         <TouchableNativeFeedback
-        onPress={() => setIsVisible(true)}
+        onPress={() => setIsVisibleInco(true)}
         >
           <View
             style={{
@@ -154,23 +154,23 @@ export const Sujeto8 = ({navigation}:Props) => {
               bottom: '-5%',
               elevation: 8,
               marginLeft: 20,
-              marginRight: 160
+              marginRight: 160,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
               //La casa
-              respuestaCorrecta
+              respuestaIncorrecta1
               }
             </Text>
           </View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback
-        onPress={() => setIsVisibleInco(true)}
+        onPress={() => setIsVisible(true)}
         >
           <View
             style={{
@@ -182,15 +182,15 @@ export const Sujeto8 = ({navigation}:Props) => {
               left: '10%',
               bottom: '-5%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
-                respuestaIncorrecta1
+                respuestaCorrecta
               }
             </Text>
           </View>
@@ -207,12 +207,12 @@ export const Sujeto8 = ({navigation}:Props) => {
               borderRadius: 40,
               paddingVertical: 5,
               left: '35%',
-              bottom: '-25%',
+              bottom: '-20%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '19%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -225,7 +225,7 @@ export const Sujeto8 = ({navigation}:Props) => {
         <Image 
         style={{
           left: '34%',
-          bottom: '-29%',
+          bottom: '-28%',
         }}
         source={require('../Act3/Robot_sujeto.png')}
       />
@@ -279,8 +279,10 @@ export const Sujeto8 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisible(false)
+              navigation.navigate('Sujeto9')
+             }
               
             }
             >
@@ -348,8 +350,10 @@ export const Sujeto8 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisibleInco(false)
+              navigation.navigate('Sujeto9')
+             }
               
             }
             >

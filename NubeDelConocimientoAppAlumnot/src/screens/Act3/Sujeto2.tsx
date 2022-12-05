@@ -122,7 +122,7 @@ export const Sujeto2 = ({navigation}:Props) => {
       
         <Text style={{
             borderRadius: 20,
-            top: '10%',
+            top: '8%',
             fontSize: 25,
             color: '#FFF',
             left: '1%',
@@ -138,7 +138,7 @@ export const Sujeto2 = ({navigation}:Props) => {
         <View style={{
             flexDirection: 'row',
             height: '10%',
-            top: '30%',
+            top: '25%',
         }}>
         <TouchableNativeFeedback
         onPress={() => setIsVisible(true)}
@@ -147,7 +147,7 @@ export const Sujeto2 = ({navigation}:Props) => {
             style={{
               backgroundColor: '#D2ECFE',
               width: '25%',
-              height: '50%',
+              height: '70%',
               borderRadius: 40,
               paddingVertical: 5,
               left: '10%',
@@ -175,7 +175,7 @@ export const Sujeto2 = ({navigation}:Props) => {
           <View
             style={{
               backgroundColor: 'rgba(255,199,1,100)',
-              width: '25%',
+              width: '30%',
               height: '50%',
               borderRadius: 40,
               paddingVertical: 5,
@@ -185,7 +185,7 @@ export const Sujeto2 = ({navigation}:Props) => {
             }}>
             <Text
               style={{
-                marginLeft: '27%',
+                marginLeft: '23%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -207,12 +207,12 @@ export const Sujeto2 = ({navigation}:Props) => {
               borderRadius: 40,
               paddingVertical: 5,
               left: '35%',
-              bottom: '-25%',
+              bottom: '-20%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '19%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -225,7 +225,7 @@ export const Sujeto2 = ({navigation}:Props) => {
         <Image 
         style={{
           left: '34%',
-          bottom: '-29%',
+          bottom: '-26%',
         }}
         source={require('../Act3/Robot_sujeto.png')}
       />
@@ -279,8 +279,10 @@ export const Sujeto2 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=>{
               setIsVisible(false)
+              navigation.navigate('Sujeto3')
+             }
               
             }
             >
@@ -348,8 +350,10 @@ export const Sujeto2 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=>{
               setIsVisibleInco(false)
+              navigation.navigate('Sujeto3')
+             }
               
             }
             >

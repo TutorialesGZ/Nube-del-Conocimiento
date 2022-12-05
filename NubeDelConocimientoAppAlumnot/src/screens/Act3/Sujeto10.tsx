@@ -122,7 +122,7 @@ export const Sujeto10 = ({navigation}:Props) => {
       
         <Text style={{
             borderRadius: 20,
-            top: '10%',
+            top: '8%',
             fontSize: 25,
             color: '#FFF',
             left: '1%',
@@ -138,7 +138,7 @@ export const Sujeto10 = ({navigation}:Props) => {
         <View style={{
             flexDirection: 'row',
             height: '10%',
-            top: '30%',
+            top: '25%',
         }}>
         <TouchableNativeFeedback
         onPress={() => setIsVisible(true)}
@@ -147,18 +147,18 @@ export const Sujeto10 = ({navigation}:Props) => {
             style={{
               backgroundColor: '#D2ECFE',
               width: '25%',
-              height: '50%',
+              height: '70%',
               borderRadius: 40,
               paddingVertical: 5,
               left: '10%',
               bottom: '-5%',
               elevation: 8,
               marginLeft: 20,
-              marginRight: 160
+              marginRight: 160,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -182,10 +182,10 @@ export const Sujeto10 = ({navigation}:Props) => {
               left: '10%',
               bottom: '-5%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -209,10 +209,10 @@ export const Sujeto10 = ({navigation}:Props) => {
               left: '35%',
               bottom: '-25%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '19%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -279,8 +279,10 @@ export const Sujeto10 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisible(false)
+              navigation.navigate('Mapa')
+             }
               
             }
             >
@@ -348,8 +350,10 @@ export const Sujeto10 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisibleInco(false)
+              navigation.navigate('Mapa')
+             }
               
             }
             >

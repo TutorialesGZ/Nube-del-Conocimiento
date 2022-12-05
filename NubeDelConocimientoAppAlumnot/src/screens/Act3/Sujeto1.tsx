@@ -279,9 +279,10 @@ export const Sujeto1 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
-              setIsVisible(false)
-              
+             onPress={()=> {
+              setIsVisible(false);
+              navigation.navigate('Sujeto2');
+              }
             }
             >
                 <Text style={{
@@ -348,9 +349,10 @@ export const Sujeto1 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
-              setIsVisibleInco(false)
-              
+             onPress={()=> {
+              setIsVisibleInco(false);
+              navigation.navigate('Sujeto2');
+             }
             }
             >
                 <Text style={{

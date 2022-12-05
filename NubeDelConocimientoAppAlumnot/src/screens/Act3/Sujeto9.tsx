@@ -122,7 +122,7 @@ export const Sujeto9 = ({navigation}:Props) => {
       
         <Text style={{
             borderRadius: 20,
-            top: '10%',
+            top: '8%',
             fontSize: 25,
             color: '#FFF',
             left: '1%',
@@ -138,10 +138,10 @@ export const Sujeto9 = ({navigation}:Props) => {
         <View style={{
             flexDirection: 'row',
             height: '10%',
-            top: '30%',
+            top: '25%',
         }}>
         <TouchableNativeFeedback
-        onPress={() => setIsVisible(true)}
+        onPress={() => setIsVisibleInco(true)}
         >
           <View
             style={{
@@ -154,17 +154,17 @@ export const Sujeto9 = ({navigation}:Props) => {
               bottom: '-5%',
               elevation: 8,
               marginLeft: 20,
-              marginRight: 160
+              marginRight: 160,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
               //La casa
-              respuestaCorrecta
+              respuestaIncorrecta1
               }
             </Text>
           </View>
@@ -182,37 +182,10 @@ export const Sujeto9 = ({navigation}:Props) => {
               left: '10%',
               bottom: '-5%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
-                marginTop: '2%',
-                color: '#000',
-              }}>
-              {
-                respuestaIncorrecta1
-              }
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-        </View>
-        <TouchableNativeFeedback
-        onPress={() => setIsVisibleInco(true)}
-        >
-          <View
-            style={{
-              backgroundColor: '#D8D67E',
-              width: '25%',
-              height: '5%',
-              borderRadius: 40,
-              paddingVertical: 5,
-              left: '35%',
-              bottom: '-25%',
-              elevation: 8,
-            }}>
-            <Text
-              style={{
-                marginLeft: '19%',
                 marginTop: '2%',
                 color: '#000',
               }}>
@@ -222,10 +195,37 @@ export const Sujeto9 = ({navigation}:Props) => {
             </Text>
           </View>
         </TouchableNativeFeedback>
+        </View>
+        <TouchableNativeFeedback
+        onPress={() => setIsVisible(true)}
+        >
+          <View
+            style={{
+              backgroundColor: '#D8D67E',
+              width: '25%',
+              height: '5%',
+              borderRadius: 40,
+              paddingVertical: 5,
+              left: '35%',
+              bottom: '-20%',
+              elevation: 8,
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                marginTop: '2%',
+                color: '#000',
+              }}>
+              {
+                respuestaCorrecta
+              }
+            </Text>
+          </View>
+        </TouchableNativeFeedback>
         <Image 
         style={{
           left: '34%',
-          bottom: '-29%',
+          bottom: '-26%',
         }}
         source={require('../Act3/Robot_sujeto.png')}
       />
@@ -279,8 +279,10 @@ export const Sujeto9 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisible(false)
+              navigation.navigate('Sujeto10')
+             }
               
             }
             >
@@ -348,8 +350,10 @@ export const Sujeto9 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisibleInco(false)
+              navigation.navigate('Sujeto10')
+             }
               
             }
             >

@@ -141,7 +141,7 @@ export const Sujeto5 = ({navigation}:Props) => {
             top: '30%',
         }}>
         <TouchableNativeFeedback
-        onPress={() => setIsVisible(true)}
+        onPress={() => setIsVisibleInco(true)}
         >
           <View
             style={{
@@ -154,17 +154,17 @@ export const Sujeto5 = ({navigation}:Props) => {
               bottom: '-5%',
               elevation: 8,
               marginLeft: 20,
-              marginRight: 160
+              marginRight: 160,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
               //La casa
-              respuestaCorrecta
+              respuestaIncorrecta1
               }
             </Text>
           </View>
@@ -182,22 +182,22 @@ export const Sujeto5 = ({navigation}:Props) => {
               left: '10%',
               bottom: '-5%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '27%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
-                respuestaIncorrecta1
+                respuestaIncorrecta2
               }
             </Text>
           </View>
         </TouchableNativeFeedback>
         </View>
         <TouchableNativeFeedback
-        onPress={() => setIsVisibleInco(true)}
+        onPress={() => setIsVisible(true)}
         >
           <View
             style={{
@@ -209,15 +209,15 @@ export const Sujeto5 = ({navigation}:Props) => {
               left: '35%',
               bottom: '-25%',
               elevation: 8,
+              alignItems: 'center',
             }}>
             <Text
               style={{
-                marginLeft: '19%',
                 marginTop: '2%',
                 color: '#000',
               }}>
               {
-                respuestaIncorrecta2
+                respuestaCorrecta
               }
             </Text>
           </View>
@@ -279,9 +279,10 @@ export const Sujeto5 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisible(false)
-              
+              navigation.navigate('Sujeto6')
+             }
             }
             >
                 <Text style={{
@@ -348,8 +349,10 @@ export const Sujeto5 = ({navigation}:Props) => {
           justifyContent: 'center',
         }}>
             <TouchableNativeFeedback
-             onPress={()=> 
+             onPress={()=> {
               setIsVisibleInco(false)
+              navigation.navigate('Sujeto6')
+             }
               
             }
             >
